@@ -55,10 +55,12 @@ public function testimonials()
         return view('contact')->with('title','Contact us');
     }
     public function contactusSubmit(yTableinquiryRequest $request){
+        
         $validator = $request->validated();
         $inquiry = new inquiry;
         $inquiry->inquiries_name = $request->inquiries_name;
-        $inquiry->inquiries_lname = $request->inquiries_lname;
+        $inquiry->inquiries_age = $request->inquiries_age;
+        $inquiry->inquiries_address = $request->inquiries_address;
         $inquiry->inquiries_email = $request->inquiries_email;
         $inquiry->inquiries_phone = $request->inquiries_phone;
         $inquiry->extra_content = $request->extra_content;

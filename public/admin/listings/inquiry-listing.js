@@ -43,28 +43,30 @@ in columns which are being shown by the join and not the part of ,
         }
         ,{
             column:'inquiries_name',
-            name:'First Name',
-            type:'text',
-        },{
-            column:'inquiries_lname',
-            name:'Last Name',
+            name:'Name',
             type:'text',
         },{
             column:'inquiries_phone',
             name:'Phone',
             type:'text',
+        },{
+            column:'inquiries_age',
+            name:'age',
+            type:'text',
+            hiddenInList:true,
+
         }
         ,{
             column:'inquiries_email',
             name:'Email',
             type:'text',
         }
-        // ,{
-        //     column:'note_value',
-        //     name:'Note',
-        //     type:'textarea',
-        //     hiddenInList:true,
-        // }
+        ,{
+            column:'extra_content',
+            name:'Message',
+            type:'textarea',
+            hiddenInList:true,
+        }
         // ,{
         //     column:'table_notes_image',
         //     name:'Image',
