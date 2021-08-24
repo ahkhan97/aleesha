@@ -5,9 +5,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-12 col-12">
-                            <div class="content">
-                                <h2>About <span class="pri-clr">Us</span></h2>
-                            </div>
+                            <?php Helper::inlineEditable("div",array('data-ckeditor' => "true",'class'=>"content")," <h2>About <span class='pri-clr'>Us</span></h2>",'ABOUTHEAD'); ?>
                         </div>
                     </div>
                 </div>
@@ -17,19 +15,27 @@
                     <div class="row">
                         <div class="col-lg-5 col-12">
                             <div class="image">
-                                <img src="{{asset('/images/b2.png')}}" alt="">
+                            <?php Helper::dynamicImages(asset(''),'images/b2.png',array("data-width"=>"445","data-height"=>"445"),'ABOUTIMG'); ?>
                             </div>
                         </div>
                         <div class="col-lg-7 col-12">
                             <div class="content content-style">
-                                <h2>About Us</h2>
-                                <h3>We’re All The Same</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                
+                                <?php Helper::inlineEditable("h2","",'About Us','ABOUTUS1');?>
+                                
+                                
+                                <?php Helper::inlineEditable("h3","",'We’re All The Same','ABOUTUS2');?>
+                                <?php Helper::inlineEditable("p","",'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                                     ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                                <p>Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                    aliqua</p>
+                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur','ABOUTUS3');?>
+
+                               
+                                <?php Helper::inlineEditable("p","",'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                    aliqua','ABOUTUS4');?>
+                                
+                                
+                              
                             </div>
                         </div>
                     </div>
@@ -37,13 +43,17 @@
                         <div class="row">
                             <div class="col-lg-5 col-12">
                                 <div class="content content-style mission-content">
-                                    <h2>Our</h2>
-                                    <h3>Mission</h3>
+                                   
+                                    <?php Helper::inlineEditable("h2","",'Our','ABOUTUS6');?>
+                                
+                                
+                                <?php Helper::inlineEditable("h3","",'Mission','ABOUTUS7');?>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-12">
                                 <div class="content content-style mission-content">
-                                   <p>Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                <?php Helper::inlineEditable("p","",'Ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.','ABOUTUS5');?>
+                                   <p></p>
                                 </div>
                             </div>
                         </div>
