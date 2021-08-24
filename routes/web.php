@@ -1,5 +1,13 @@
 <?php
 Route::get('/', 'IndexController@index')->name('home');
+Route::get('/sign-up', 'IndexController@signupform')->name('signupform');
+Route::post('/signup', 'IndexController@signup')->name('signup');
+
+Route::get('/sign-in', 'IndexController@signinform')->name('signinform');
+Route::post('/sign-in', 'IndexController@signin')->name('signin');
+Route::get('/signout', 'IndexController@signout')->name('signout');
+
+Route::post('/sign-in', 'IndexController@signin')->name('signin');
 Route::get('/about-us', 'IndexController@about')->name('about');
 Route::get('/services', 'IndexController@services')->name('services');
 Route::get('/testimonials', 'IndexController@testimonials')->name('testimonials');

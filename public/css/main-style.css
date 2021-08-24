@@ -830,3 +830,44 @@ section.member-sec {
     font-size: 30px;
     font-weight: 300;
 }
+/* sign up page start */
+
+.sign-content {
+    text-align: center;
+}
+.sign-shadow {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 30px 30px;
+    border-radius: 21px;
+}
+.singup {
+    padding-bottom: 30px;
+}
+
+.sign-up-form input.form-control {
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.sign-up-form select.form-select {
+    margin-bottom: 30px;
+	border-radius: 10px;
+}
+section.main-sign {
+    padding: 55px 0px;
+}
+.sign-content h4 {
+    line-height: 30px;
+}
+.sign-up-form .form-label {
+    padding-left: 15px;
+}
+
+/* sign up page end */
+
+
+/* login start  */
+section.login .btn-wrapper {
+    text-align: center;
+}
+/* login end  */

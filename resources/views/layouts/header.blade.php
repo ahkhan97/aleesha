@@ -20,6 +20,11 @@
                                 <li><a href="{{route('services')}}">Services</a></li>
                                 <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                 <li><a href="{{route('contactus')}}" class="btn btn-white">Contact Us</a></li>
+                                @if(Auth::check())
+                                <li><a href="{{route('signout')}}"  class="btn btn-white">Log Out </a></li>
+                                @else
+                                <li><a href="{{route('signinform')}}" class="btn btn-white">Log in </a></li> 
+                                @endif
                             </ul>
                         </div>
                     </div>
