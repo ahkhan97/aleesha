@@ -1,6 +1,8 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
 <!-- jQuery ,bootstrap and any 3rd party script should be compiled into all.js -->
-<!-- <script src="{{asset('js/front/all.js')}}"></script> -->
+<script src="{{asset('js/front/all.js')}}"></script>
+<script src="{{asset('js/front/jquery.min.js')}}"></script>
+
 <!--this is the file html team has given, don't minify or compile it-->
 <!-- <script src="{{asset('js/front/custom.js')}}"></script> -->
 <!--DNE-->
@@ -9,9 +11,12 @@
 
 
     <script src="{{asset('/js/slick.js')}}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     <script src="{{asset('/js/custom.j')}}s"></script>
     <script src="{{asset('/js/theme.js')}}"></script>
+    <script src="{{asset('js/front/bootstrap.min.js')}}"></script>
+    <script src="{{asset('js/front/bootstrap-notify.min.js')}}"></script>
+   
     <script src="https://kit.fontawesome.com/b8c4e50b83.js?ver=1.0.0"></script>
 
 <script type="text/javascript">
