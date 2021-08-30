@@ -16,7 +16,7 @@
     <script src="{{asset('/js/theme.js')}}"></script>
     <script src="{{asset('js/front/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/front/bootstrap-notify.min.js')}}"></script>
-   
+    <script src="{{asset('dash/js/jquery.toast.js')}}"></script>
     <script src="https://kit.fontawesome.com/b8c4e50b83.js?ver=1.0.0"></script>
     
 

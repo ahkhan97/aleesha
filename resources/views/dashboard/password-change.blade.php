@@ -1,0 +1,69 @@
+@extends('layouts.dashboard.main')
+
+@section('content')
+
+<div class="col-lg-8 pdy-30">
+				<div class="row justify-content-center">
+					<div class="profile">
+						<div class="col-lg-12">
+							<div class="e-profile pdy-30">
+								<h2>Password Change</h2>
+								<p>Change your password</p>
+
+							</div>
+
+							<div class="contact-form1">
+								<div class="row m-0">
+									<div class="col-lg-3">
+										<div class="email-pass">
+												
+												<label>Password</label>
+												<label>Retype Password</lable>
+										</div>
+									</div>
+									<div class="col-lg-9">
+
+										<form action="{{ route('update.account.password') }}" method="post"  id="accountForm">
+                                        @csrf
+											
+											<input type="password" name="password" placeholder="Enter New Password Here" required id="myInput" class=" form-control">
+                                            {{Helper::errorField('password',$errors)}}
+
+											<input type="password" name="password_confirmation" placeholder="Retype Password Here" required id="myInput" class=" form-control">
+                                            {{Helper::errorField('password_confirmation',$errors)}}
+                                            <div class="save-info">
+												<button type="submit">Save</button> 
+
+											</div>
+
+
+										</form>
+									</div>
+								</div>
+
+							</div>
+
+
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+@endsection
+@section('css')
+<style type="text/css">
+  /*in page css here*/
+
+</style>
+@endsection
+@section('js')
+<script type="text/javascript">
+(()=>{
+  /*in page css here*/
+  
+})()
+</script>
+@endsection

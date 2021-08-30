@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="{{ asset('/css/lightgallery.css') }}">
 <link rel="stylesheet" href="{{ asset('/css/slick-theme.css') }}">
 <link rel="stylesheet" href="{{ asset('css/main-style.css') }}">
+<link href="{{asset('dash/css/jquery.toast.css')}}" rel="stylesheet">
 <!--DNE-->
 <style>
 *[contenteditable]:focus {

@@ -16,12 +16,13 @@
                         <div class="header-menu">
                             <ul>
                                 <li><a href="{{route('home')}}">Home</a></li>
-                                <li><a href="{{route('about')}}">About Us</a></li>
+                                <li><a class="abt-us" href="{{route('about')}}">About Us</a></li>
                                 <li><a href="{{route('services')}}">Services</a></li>
                                 <li><a href="{{route('testimonials')}}">Testimonials</a></li>
                                 <li><a href="{{route('contactus')}}" class="btn btn-white">Contact Us</a></li>
                                 @if(Auth::check())
-                                <li><a href="{{route('signout')}}"  class="btn btn-white">Log Out </a></li>
+                                <li><a href="{{route('dashboard.index')}}"  class="btn btn-white">My Account </a></li>
+                                <li class=><a title="Log Out" href="{{route('signout')}}"  class="btn btn-white"><i class="fa fa-sign-out"></i></a></li>
                                 @else
                                 <li><a href="{{route('signinform')}}" class="btn btn-white">Log in </a></li> 
                                 @endif

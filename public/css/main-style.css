@@ -755,8 +755,12 @@ header .header-menu ul li:not(:last-child) {
     margin-right: 50px;
 }
 
+.abt-us{
+	width: max-content;
+}
+
 header .header-menu ul li:last-child {
-    margin-left: 50px;
+    margin-left: -44px;
 }
 body.inner-page header .header-menu ul li:last-child {
     margin-left: 0;

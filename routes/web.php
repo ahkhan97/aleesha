@@ -5,7 +5,7 @@ Route::post('/signup', 'IndexController@signup')->name('signup');
 
 Route::get('/sign-in', 'IndexController@signinform')->name('signinform');
 Route::post('/sign-in', 'IndexController@signin')->name('signin');
-Route::get('/signout', 'IndexController@signout')->name('signout');
+// Route::get('/signout', 'IndexController@signout')->name('signout');
 
 Route::post('/sign-in', 'IndexController@signin')->name('signin');
 Route::get('/about-us', 'IndexController@about')->name('about');
@@ -13,6 +13,19 @@ Route::get('/services', 'IndexController@services')->name('services');
 Route::get('/testimonials', 'IndexController@testimonials')->name('testimonials');
 Route::get('/contact-us', 'IndexController@contactus')->name('contactus');
 
+Route::group(['middleware' => 'auth'], function()
+{
+	Route::get('dashboard', 'Dashboard\DashboardController@dashboard')->name('dashboard.index');
+	Route::get('dashboard/edit_profile', 'Dashboard\DashboardController@editprofile')->name('dashboard.editProfile');
+	Route::post('dashboard/edit_profile', 'Dashboard\DashboardController@saveprofile')->name('dashboard.submitProfile');
+	Route::get('dashboard/password_change', 'Dashboard\DashboardController@passwordchange')->name('dashboard.passwordChange');
+	Route::get('dashboard/wishlist', 'Dashboard\DashboardController@userwishlist')->name('dashboard.wishlist');
+	Route::post('dashboard/update/password','Dashboard\DashboardController@updatepassword')->name('update.account.password');
+	Route::post('add-to-wish-list','Dashboard\DashboardController@wishlist')->name('add.wishlist');
+	Route::post('remove-from-wish-list','Dashboard\DashboardController@remove_wishlist')->name('remove.wishlist');
+
+	Route::get('/signout', 'IndexController@signout')->name('signout');
+});
 
 // Route::get('/contact-us', 'IndexController@contactus')->name('contactus');
 Route::post('/contact-us-submit', 'IndexController@contactusSubmit')->name('contactusSubmit');

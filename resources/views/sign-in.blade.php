@@ -19,12 +19,16 @@
                                 <label for="exampleFormControlInput1" class="form-label">Email Address</label>
                                     <input type="email" class="form-control" name="useremail" placeholder="name@example.com">
                                     <label for="pass">Password</label>
-                                        <input type="password" name="password" class="form-control"  required>                                
+                                        <input type="password" name="password" class="form-control" placeholder="Password" required>                                
                                
                                  
                                 </div>
                                 <div class="btn-wrapper">
-                                    <button type="submit" class="btn btn-pri">Register</button>
+                                    <button type="submit" class="btn btn-pri">Login</button>
+                                </div>
+                                <br/>
+                                <div class="btn-wrapper">
+                                    <a href="{{route('signupform')}}">Don't have account? Sign Up!</a>
                                 </div>
 
                         </div>

@@ -43,141 +43,37 @@
                 </div>
                 <div class="member-wrapper">
                     <div class="row">
+                        @foreach($users as $user)
                         <div class="col-lg-4 col-12">
                             <div class="member-inner">
                                 <div class="image">
-                                    <img src="{{asset('/images/s1.png')}}" alt="">
+                                    <img src="{{$user->img_tab->img_path}}" alt="">
                                     <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
+                                        <!-- <a href="#" class="chat"><i class="fas fa-comments"></i></a> -->
+                                        @if(Auth::check())
+                                       
+                                        @if(count(Auth::user()->wish_list) > 0)
+                                        @foreach(Auth::user()->wish_list as $wish)
+
+                                        @if($wish->person_id == $user->id)
+                                        <a href="javascript:void(0)" class="unlike" data-id="{{ $user->id }}" title="Remove From wish list"><i class="fa fa-heart"></i></a>
+                                        @else
+                                        <a href="javascript:void(0)" class="like" data-id="{{ $user->id }}" title="Add to wish list"><i class="far fa-heart"></i></a>
+                                        @endif
+                                        @endforeach
+                                        @else
+                                        <a href="javascript:void(0)" class="like" data-id="{{ $user->id }}" title="Add to wish list"><i class="far fa-heart"></i></a>
+                                        @endif
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="content">
-                                    <h2>Jessle James</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
+                                    <h2>{{$user->name}} {{$user->lname}}</h2>
+                                    <h5>Age : <span class="pri-clr">{{$user->age}}</span></h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s2.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Petter Dark</h2>
-                                    <h5>Age : <span class="pri-clr">24</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s3.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Jeni Lops</h2>
-                                    <h5>Age : <span class="pri-clr">40</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s4.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Juli Sam</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s5.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Jessle James</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s6.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Petter Dark</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s7.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Jeni Lops</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s8.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Jessle James</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="member-inner">
-                                <div class="image">
-                                    <img src="{{asset('/images/s9.png')}}" alt="">
-                                    <div class="icon">
-                                        <a href="#" class="chat"><i class="fas fa-comments"></i></a>
-                                        <a href="#" class="like"><i class="far fa-heart"></i></a>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h2>Belly Joy</h2>
-                                    <h5>Age : <span class="pri-clr">25</span></h5>
-                                </div>
-                            </div>
-                        </div>
+                       @endforeach
                     </div>
                 </div>
             </div>
@@ -194,6 +90,81 @@
 <script type="text/javascript">
 (()=>{
   /*in page css here*/
+  $('.like').click(function ()
+		{
+			var id = $(this).data("id");
+
+      
+
+			var token = $('meta[name="csrf-token"]').attr("content");
+
+			var url = '{{ url('add-to-wish-list') }}';
+			$.ajax({
+				url: url,
+				type: 'post',
+				data: {profile_id: id, _token:token},
+				success: function(){
+					$.toast({
+						heading: 'Success!',
+						position: 'bottom-right',
+						text:  'Added To Wish List!',
+						loaderBg: '#ff6849',
+						icon: 'success',
+						hideAfter: 2000,
+						stack: 6
+					});
+
+              setInterval(() => {
+                location.reload();
+              }, 2000);
+							
+			return false;
+				},
+				// On fail
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+    
+		});
+
+        $('.unlike').click(function ()
+		{
+			var id = $(this).data("id");
+
+      
+
+			var token = $('meta[name="csrf-token"]').attr("content");
+
+			var url = '{{ url('remove-from-wish-list') }}';
+			$.ajax({
+				url: url,
+				type: 'post',
+				data: {profile_id: id, _token:token},
+				success: function(){
+					$.toast({
+						heading: 'Success!',
+						position: 'bottom-right',
+						text:  'Removed From Wish List!',
+						loaderBg: '#ff6849',
+						icon: 'success',
+						hideAfter: 2000,
+						stack: 6
+					});
+
+              setInterval(() => {
+                location.reload();
+              }, 2000);
+							
+			return false;
+				},
+				// On fail
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+    
+		});
 })()
 </script>
 @endsection

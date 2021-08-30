@@ -40,20 +40,22 @@ class IndexController extends Controller
         ->with('homeMenu',true);
         //->with(compact('banners','deals'))
     }
-public function about()
-{
-return view('about')->with('title',"Services");
-}
-   
-public function services()
-{
-   return view('services')->with('title',"Services");
-}
-   
-public function testimonials()
-{
-   return view('testimonials')->with('title',"Testimonials");
-}
+    public function about()
+    {
+    return view('about')->with('title',"Services");
+    }
+    
+    public function services()
+    {
+        $users = User::where('id','!=',Auth::id())->with('img_tab')->get();
+       // dd($users);
+        return view('services')->with('title',"Services")->with(compact('users'));
+    }
+    
+    public function testimonials()
+    {
+    return view('testimonials')->with('title',"Testimonials");
+    }
    
     public function contactus()
     {
@@ -93,7 +95,7 @@ public function testimonials()
         ]);
 
         $user = User::create([
-            'name' => $request['fname'],
+            'name' => $request['name'],
             'lname' => $request['lname'],
             'age' => $request['age'],
             'phone' => $request['phone'],
@@ -104,16 +106,34 @@ public function testimonials()
 
         Auth::login($user);
 
+        if(request()->hasFile('avatar')){
+            $avatar = request()->file('avatar')->store('Uploads/avatar/'.Auth::user()->id.rand().rand(10,100), 'public');
+            $image = imagetable::updateOrCreate (
+                [
+                 'ref_id' => $user->id,
+                 'table_name' => 'users',
+                ],
+             [
+             'table_name' => 'users',
+             'img_path' => $avatar,
+             'ref_id' => $user->id,
+             'type' => 1,
+             'is_active_img'=>1,
+         ]);
+          }
+
+       
      
         return back()->with('notify_success','Registration Successful!');
         
 }
 
-public function signinform()
+    public function signinform()
     {
     return view('sign-in')->with('title','Sign In');
     }
-public function signin(Request $request)
+
+    public function signin(Request $request)
     {
 
         $validator = $request->validate([
@@ -136,5 +156,7 @@ public function signin(Request $request)
         Auth::logout();
         return redirect()->route('home')->with('notify_success','Logged Out!');
     }
+
+    
 
 }

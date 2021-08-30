@@ -20,7 +20,7 @@
                                 <div class="col-md-6">
                               
 
-                                    <form  data-noinfo="true" action="{{route('signup')}}" method="POST">
+                                    <form  data-noinfo="true" action="{{route('signup')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                     <div class="sign-up-form">
                                         <label class="form-label">First Name</label>
@@ -58,6 +58,16 @@
                                     <input type="password" class="form-control" id="pass" name="confrim-password" minlength="8">
                                     </div>
                                 </div>
+                                <div class="col-md-12 text-center">
+
+                                <label>Profile Picture</label>
+                                <div id="drop-area">
+                                                
+                                   
+								    <input type="file" id="fileElem"  name="avatar" required  >
+                                    <label class="button" for="fileElem">click to browse</label>
+                                </div>
+                                </div>
                                 <div class="btn-wrapper">
                                     <button type="submit"  class="btn btn-pri">Register</button>
                                 </div>
@@ -81,6 +91,27 @@
 @section('css')
 <style type="text/css">
 	/*in page css here*/
+    .btn-wrapper{
+        margin: 0 auto;
+    }
+    #drop-area{
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    width: 292px;
+    font-family: sans-serif;
+    margin: auto;
+    height: 100px;
+    padding-top: 44px;
+    position: relative;
+    background-image: url(images/drop-image.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    background-position: top center;
+    margin-bottom: 20px;
+}
+#fileElem{
+    display: none;
+}
 </style>
 @endsection
 @section('js')
@@ -88,13 +119,12 @@
   @if (count($errors) > 0)
          
          @foreach ($errors->all() as $error)
-           
-generateNotification('0','{{ $error }}'); 
-           
-                
+        generateNotification('0','{{ $error }}');         
          @endforeach
       
 @endif
+
+let dropArea = document.getElementById('drop-area');
 (()=>{
   /*in page css here*/
 })()
