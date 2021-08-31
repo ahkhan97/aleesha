@@ -13,6 +13,7 @@ use App\Model\inquiry;
 use App\Model\m_flag;
 use App\Model\User;
 use App\Model\wish_list;
+use App\Model\friendrequest;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -122,7 +123,16 @@ class DashboardController extends Controller
     }
 
 
+    public function friendRequest(Request $request)
+    {
+    //    dd($request->all());
+        $friend_req = friendrequest::create([
+            'user_id' => Auth::id(),
+            'person_id' => $request['profile_id'],
+            
+        ]);
 
+    }
     
 
 }

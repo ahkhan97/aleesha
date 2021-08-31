@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Model\wish_list', 'user_id','id');
     }
+
+    public function friend_request()
+    {
+        return $this->hasMany('App\Model\friendrequest', 'user_id','id');
+    }
 }

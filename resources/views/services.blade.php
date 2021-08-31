@@ -65,6 +65,25 @@
                                         <a href="javascript:void(0)" class="like" data-id="{{ $user->id }}" title="Add to wish list"><i class="far fa-heart"></i></a>
                                         @endif
                                         @endif
+
+                                     
+                                        @if(Auth::check())
+
+                                       
+
+                                       
+                                    
+                                   
+                                        <a href="javascript:void(0)" class="add-friend" data-id="{{ $user->id }}"><i class="fa fa-user-plus"></i></a>
+
+                                        <a href="javascript:void(0)" title="Pending" class="req-pending" data-id="{{ $user->id }}"><i class="fa fa-clock-o"></i></a>
+
+                                     
+                                             
+                                      
+ 
+                                        @endif
+                                
                                     </div>
                                 </div>
                                 <div class="content">
@@ -165,6 +184,47 @@
 			});
     
 		});
+
+
+
+
+        $('.add-friend').click(function ()
+		{
+			var id = $(this).data("id");
+
+
+			var token = $('meta[name="csrf-token"]').attr("content");
+
+			var url = '{{ url('friend-request') }}';
+			$.ajax({
+				url: url,
+				type: 'post',
+				data: {profile_id: id, _token:token},
+				success: function(){
+					$.toast({
+						heading: 'Success!',
+						position: 'bottom-right',
+						text:  'Friend Request Send!',
+						loaderBg: '#ff6849',
+						icon: 'success',
+						hideAfter: 2000,
+						stack: 6
+					});
+
+              setInterval(() => {
+                location.reload();
+              }, 2000);
+							
+			return false;
+				},
+				// On fail
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+    
+		});
+
 })()
 </script>
 @endsection

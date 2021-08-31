@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('dashboard/update/password','Dashboard\DashboardController@updatepassword')->name('update.account.password');
 	Route::post('add-to-wish-list','Dashboard\DashboardController@wishlist')->name('add.wishlist');
 	Route::post('remove-from-wish-list','Dashboard\DashboardController@remove_wishlist')->name('remove.wishlist');
+	Route::post('friend-request','Dashboard\DashboardController@friendRequest')->name('add.friendRequest');
+
 
 	Route::get('/signout', 'IndexController@signout')->name('signout');
 });
