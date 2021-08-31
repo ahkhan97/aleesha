@@ -52,37 +52,25 @@
                                         <!-- <a href="#" class="chat"><i class="fas fa-comments"></i></a> -->
                                         @if(Auth::check())
                                        
-                                        @if(count(Auth::user()->wish_list) > 0)
-                                        @foreach(Auth::user()->wish_list as $wish)
-
-                                        @if($wish->person_id == $user->id)
+                                        
+                                       <?php
+                                            $wishlist = App\Model\wish_list::where('person_id',$user->id)->first();
+                                       ?>
+                                       
+                                        
+                                        @if(isset($wishlist))
+                                       
                                         <a href="javascript:void(0)" class="unlike" data-id="{{ $user->id }}" title="Remove From wish list"><i class="fa fa-heart"></i></a>
                                         @else
+                                       
                                         <a href="javascript:void(0)" class="like" data-id="{{ $user->id }}" title="Add to wish list"><i class="far fa-heart"></i></a>
                                         @endif
-                                        @endforeach
-                                        @else
-                                        <a href="javascript:void(0)" class="like" data-id="{{ $user->id }}" title="Add to wish list"><i class="far fa-heart"></i></a>
-                                        @endif
-                                        @endif
-
-                                     
-                                        @if(Auth::check())
-
-                                       
-
-                                       
                                     
-                                   
-                                        <a href="javascript:void(0)" class="add-friend" data-id="{{ $user->id }}"><i class="fa fa-user-plus"></i></a>
-
-                                        <a href="javascript:void(0)" title="Pending" class="req-pending" data-id="{{ $user->id }}"><i class="fa fa-clock-o"></i></a>
+                                       
+                                        @endif
 
                                      
-                                             
                                       
- 
-                                        @endif
                                 
                                     </div>
                                 </div>

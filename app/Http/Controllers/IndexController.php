@@ -12,6 +12,7 @@ use App\Model\imagetable;
 use App\Model\inquiry;
 use App\Model\m_flag;
 use App\Model\User;
+use App\Model\wish_list;
 
 class IndexController extends Controller
 {
