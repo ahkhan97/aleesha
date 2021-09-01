@@ -14,6 +14,7 @@ use App\Model\m_flag;
 use App\Model\User;
 use App\Model\wish_list;
 use App\Model\friendrequest;
+use App\Model\userfriend;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
@@ -59,6 +60,7 @@ class DashboardController extends Controller
 
     public function remove_wishlist(Request $request)
     {
+    
         $wish_list = wish_list::where(['user_id'=>Auth::id(),'person_id'=>$request['profile_id']])->delete();
         
 
@@ -103,7 +105,8 @@ class DashboardController extends Controller
     }
     public function userwishlist()
     {
-        $user_wishlist = Wish_list::where('user_id',Auth::id())->with(['wish','img_tab'])->get();
+        $user_wishlist = wish_list::where('user_id',Auth::id())->with(['wish','img_tab'])->get();
+        //dd($user_wishlist);
         // dd($user_wishlist);
         return view('dashboard.wishlist.index')->with('title','Wishlist')->with(compact('user_wishlist'))->with('wishlistmenu',true);
     
@@ -132,6 +135,37 @@ class DashboardController extends Controller
             
         ]);
 
+    }
+public function userfriendrequest()
+{
+    $friendRequest =friendRequest::where('Person_id',Auth::id())->with(['friend_req','img_tab'])->get();
+    return view('dashboard.friendrequest.index')->with('title','Friend Request')->with(compact('friendRequest'))->with('friendRequestmenu',true);
+}
+    public function deletefriendRequest(Request $request)
+    {
+            // dd($request->all());
+            $friend_req = friendrequest::where(['user_id'=>Auth::id(),'person_id'=>$request['profile_id']])->delete();
+
+         
+
+    }
+
+    public function friend_req_accept(Request $request)
+    {
+        
+        
+        $friend = userfriend::create([
+            'user_id' => Auth::id(),
+            'person_id' => $request['profile_id'],
+            
+        ]);
+        $req_delete = friendrequest::where(['user_id'=>$request['profile_id'] ,'person_id'=>Auth::id()])->delete();
+
+    }
+    public function friend_req_delete(Request $request)
+    {
+        $req_delete = friendrequest::where(['user_id'=>$request['profile_id'],'person_id'=>Auth::id()])->delete();
+        
     }
     
 

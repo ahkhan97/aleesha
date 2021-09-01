@@ -83,6 +83,8 @@
 							<li class="{{isset($passChangeMenu)?'active':''}}"><i class="far fa-lock-alt"></i><a href="{{route('dashboard.passwordChange')}}">Password
 									Change</a></li>
 									<li class="{{isset($passChangeMenu)?'active':''}}"><i class="far fa-heart"></i><a href="{{route('dashboard.wishlist')}}">Wishlist</a></li>
+									<li class="{{isset($passChangeMenu)?'active':''}}"><i class="fas fa-user-friends"></i><a href="{{route('dashboard.friendrequest')}}">Friend Request</a></li>
+
 							
 							<li><i class="fa fa-sign-out" aria-hidden="true"></i><a href="{{route('signout')}}">Logout</a></li>
 						</ul>

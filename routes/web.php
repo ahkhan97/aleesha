@@ -24,6 +24,12 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('add-to-wish-list','Dashboard\DashboardController@wishlist')->name('add.wishlist');
 	Route::post('remove-from-wish-list','Dashboard\DashboardController@remove_wishlist')->name('remove.wishlist');
 	Route::post('friend-request','Dashboard\DashboardController@friendRequest')->name('add.friendRequest');
+	Route::post('delete-friend-request','Dashboard\DashboardController@deletefriendRequest')->name('add.deletefriendRequest');
+	Route::get('dashboard/friend-request', 'Dashboard\DashboardController@userfriendrequest')->name('dashboard.friendrequest');
+	Route::post('friend-request-accept','Dashboard\DashboardController@friend_req_accept')->name('add.acceptfriendRequest');
+	Route::post('friend-request-delete','Dashboard\DashboardController@friend_req_delete')->name('add.deletefriendRequest');
+	
+
 
 
 	Route::get('/signout', 'IndexController@signout')->name('signout');

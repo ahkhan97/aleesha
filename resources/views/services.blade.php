@@ -65,11 +65,29 @@
                                        
                                         <a href="javascript:void(0)" class="like" data-id="{{ $user->id }}" title="Add to wish list"><i class="far fa-heart"></i></a>
                                         @endif
-                                    
-                                       
+
+                                      <?php
+                                            $friend_req = App\Model\friendrequest::where('person_id',$user->id)->first();
+                                            $friend = App\Model\userfriend::where(['person_id'=> $user->id,'user_id'=>Auth::id()])->orWhere(['person_id'=>Auth::id(),'user_id'=>$user->id])->first();
+                                       ?>
+							
+							@if(isset($friend))
+<span><i class="fa fa-check" aria-hidden="true"></i>
+Friend</span>
+								@else
+
+                                        @if(isset($friend_req))
+                                        <a href="javascript:void(0)" class="un-friend" data-id="{{ $user->id }}" title="Request Pending"><i class="fa fa-clock-o"></i></a>
+
+                                        @else
+                                        <a href="javascript:void(0)" class="add-friend" data-id="{{ $user->id }}" title="Add Friend"><i class="fa fa-user-plus"></i></a>
+
                                         @endif
 
-                                     
+                                        @endif
+
+                                       
+@endif
                                       
                                 
                                     </div>
@@ -212,6 +230,47 @@
 			});
     
 		});
+
+
+
+        $('.un-friend').click(function ()
+		{
+			var id = $(this).data("id");
+
+      
+
+			var token = $('meta[name="csrf-token"]').attr("content");
+
+			var url = '{{ url('delete-friend-request') }}';
+			$.ajax({
+				url: url,
+				type: 'post',
+				data: {profile_id: id, _token:token},
+				success: function(){
+					$.toast({
+						heading: 'Success!',
+						position: 'bottom-right',
+						text:  'Friend Request Cancel!',
+						loaderBg: '#ff6849',
+						icon: 'success',
+						hideAfter: 2000,
+						stack: 6
+					});
+
+              setInterval(() => {
+                location.reload();
+              }, 2000);
+							
+			return false;
+				},
+				// On fail
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log(textStatus, errorThrown);
+				}
+			});
+    
+		});
+
 
 })()
 </script>
