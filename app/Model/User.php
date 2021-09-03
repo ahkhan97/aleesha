@@ -33,4 +33,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Model\friendrequest', 'user_id','id');
     }
+
+    public function friends()
+    {
+        return $this->hasMany('App\Model\userfriend', 'user_id','id');
+    }
 }

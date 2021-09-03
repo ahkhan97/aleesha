@@ -68,8 +68,9 @@
 
                                       <?php
                                             $friend_req = App\Model\friendrequest::where('person_id',$user->id)->first();
-                                            $friend = App\Model\userfriend::where(['person_id'=> $user->id,'user_id'=>Auth::id()])->orWhere(['person_id'=>Auth::id(),'user_id'=>$user->id])->first();
-                                       ?>
+                                            $friend = App\Model\userfriend::where('person_id', $user->id)->orwhere('user_id',$user->id)->first();
+                                
+									   ?>
 							
 							@if(isset($friend))
 <span><i class="fa fa-check" aria-hidden="true"></i>
