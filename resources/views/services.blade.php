@@ -43,6 +43,7 @@
                 </div>
                 <div class="member-wrapper">
                     <div class="row">
+
                         @foreach($users as $user)
                         <div class="col-lg-4 col-12">
                             <div class="member-inner">

@@ -38,4 +38,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Model\userfriend', 'user_id','id');
     }
+    public function friends2()
+    {
+        return $this->hasMany('App\Model\userfriend', 'person_id','id');
+    }
 }

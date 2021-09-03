@@ -138,7 +138,7 @@ class DashboardController extends Controller
     }
 public function userfriendrequest()
 {
-    $friendRequest =friendRequest::where('Person_id',Auth::id())->with(['friend_req','img_tab'])->get();
+    $friendRequest =friendRequest::where('person_id',Auth::id())->with(['friend_req','img_tab'])->get();
     return view('dashboard.friendrequest.index')->with('title','Friend Request')->with(compact('friendRequest'))->with('friendRequestmenu',true);
 }
     public function deletefriendRequest(Request $request)
@@ -169,4 +169,37 @@ public function userfriendrequest()
     }
     
 
+    public function friends()
+    {
+
+    $friends = array();
+    $users = User::where('id','!=',Auth::id())->with('img_tab')->get();
+foreach($users as $user)
+{
+    
+     $query1 = userfriend::where('person_id', $user->id)->with('showfriends')->first();
+     $query2 = userfriend::where('user_id', $user->id)->with('showfriends')->first();
+     //dd($query2);
+    //$query = userfriend::where(['or',['person_id'=>$user->id],['user_id'=>$user->id]])->first();
+    if(isset($query1))
+    {
+        array_push($friends,$query1);
+    }
+    elseif (isset($query2))
+    {
+        array_push($friends,$query2);
+    }
+   
+}
+foreach ($friends as $key => $value) {
+    if ($value == null) {
+        unset($friends[$key]);
+    }
+}
+// dd($friends);
+// dd($friends);
+
+    // $friends =userfriend::where('Person_id',Auth::id())->orwhere('user_id',Auth::id())->with(['friends','img_tab'])->get();
+    return view('dashboard.friends.index')->with('title','Friends')->with(compact('friends'))->with('friendsmenu',true);
+}
 }

@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('dashboard/friend-request', 'Dashboard\DashboardController@userfriendrequest')->name('dashboard.friendrequest');
 	Route::post('friend-request-accept','Dashboard\DashboardController@friend_req_accept')->name('add.acceptfriendRequest');
 	Route::post('friend-request-delete','Dashboard\DashboardController@friend_req_delete')->name('add.deletefriendRequest');
+	Route::get('dashboard/friends', 'Dashboard\DashboardController@friends')->name('dashboard.showfriends');
 	
 
 
