@@ -174,21 +174,22 @@ public function userfriendrequest()
 
     $friends = array();
     $users = User::where('id','!=',Auth::id())->with('img_tab')->get();
+
 foreach($users as $user)
 {
     
-     $query1 = userfriend::where('person_id', $user->id)->with('showfriends')->first();
-     $query2 = userfriend::where('user_id', $user->id)->with('showfriends')->first();
+     $query1 = userfriend::where('user_id', $user->id)->where('user_id', '!=' ,Auth::id())->with('showfriends')->first();
+    //  $query2 = userfriend::where('user_id', $user->id)->with('showfriends')->first();
      //dd($query2);
     //$query = userfriend::where(['or',['person_id'=>$user->id],['user_id'=>$user->id]])->first();
     if(isset($query1))
     {
         array_push($friends,$query1);
     }
-    elseif (isset($query2))
-    {
-        array_push($friends,$query2);
-    }
+    // elseif (isset($query2))
+    // {
+    //     array_push($friends,$query2);
+    // }
    
 }
 foreach ($friends as $key => $value) {
